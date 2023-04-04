@@ -6,7 +6,7 @@ import Assesment from './components/Assessment/View';
 type Props = {};
 
 const locationImage =
-  'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=874&q=80';
+  'https://images.unsplash.com/photo-1573588546512-2ace898aa480?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80';
 
 export default function CardBarberShop({}: Props) {
   return (

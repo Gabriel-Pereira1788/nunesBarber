@@ -1,8 +1,10 @@
 import React from 'react';
 import * as S from 'native-base';
 import Animated, {FadeInDown} from 'react-native-reanimated';
-import {StyleSheet, TouchableOpacity} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 import {BlurView} from '@react-native-community/blur';
+import {Star} from 'phosphor-react-native';
+import {globalStyles} from '../../../../../themes/globalStyles';
 type Props = {};
 
 const barberPhoto =
@@ -38,20 +40,30 @@ export default function CardVisit({}: Props) {
                 alignItems="center"
                 justifyContent="center"
                 height="30%"
-                backgroundColor="rgba(0,0,0,0.5)">
+                overflow="hidden"
+                backgroundColor="rgba(0,0,0,0.1)">
                 <BlurView
-                  style={styles.absolute}
+                  style={globalStyles.blurContainer}
                   blurType="dark"
-                  blurAmount={15}
+                  blurAmount={5}
                 />
                 <S.Text fontWeight={500} color="#eea12f">
                   PRO
                 </S.Text>
               </S.Box>
             </S.Box>
-            <S.Text fontWeight={500} fontSize="lg" color="#080808">
-              Richard Anderson
-            </S.Text>
+            <S.VStack>
+              <S.Text fontWeight={500} fontSize="lg" color="#080808">
+                Richard Anderson
+              </S.Text>
+              <S.HStack space={1}>
+                <Star size={18} color="#eea12f" weight="fill" />
+
+                <S.Text fontWeight={500} fontSize="xs" color="#000000df">
+                  4.9 (179)
+                </S.Text>
+              </S.HStack>
+            </S.VStack>
           </S.HStack>
 
           <S.Button
@@ -71,14 +83,3 @@ export default function CardVisit({}: Props) {
     </TouchableOpacity>
   );
 }
-
-const styles = StyleSheet.create({
-  absolute: {
-    position: 'absolute',
-
-    top: 0,
-    bottom: 0,
-    right: 0,
-    left: 0,
-  },
-});
