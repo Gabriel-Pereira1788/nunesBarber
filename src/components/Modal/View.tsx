@@ -27,6 +27,7 @@ export default function Modal({}: ModalProps) {
   }
 
   React.useImperativeHandle(modalRef, () => ({hide, show, visible}));
+
   return (
     <S.Modal onClose={hide} isOpen={visible}>
       {ShowComponent}

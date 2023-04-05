@@ -2,7 +2,7 @@ import React from 'react';
 import * as S from 'native-base';
 import {TouchableOpacity} from 'react-native';
 interface SocialButtonProps {
-  IconSocial: () => JSX.Element;
+  IconSocial: JSX.Element;
   children: React.ReactNode;
 }
 
@@ -22,7 +22,7 @@ export default function SocialButton({
         alignItems="center"
         justifyContent="center">
         <S.Box position="absolute" left={5}>
-          <IconSocial />
+          {IconSocial}
         </S.Box>
         <S.Text color="#fff" fontSize="md" fontWeight={500}>
           {children}

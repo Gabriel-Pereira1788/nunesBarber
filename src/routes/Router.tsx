@@ -6,6 +6,7 @@ import InitialScreen from '../screens/public/InitialScreen/View';
 import {RootParamListI} from './navigation';
 import {TransitionPresets, createStackNavigator} from '@react-navigation/stack';
 import SignIn from '../screens/public/SignIn/View';
+import SignUp from '../screens/public/SignUp/View';
 
 type Props = {};
 const TransitionScreenOptions = {
@@ -20,6 +21,15 @@ export default function Router({}: Props) {
         <Stack.Screen
           name="signIn"
           component={SignIn}
+          options={{
+            headerTransparent: true,
+            headerTitle: '',
+          }}
+        />
+
+        <Stack.Screen
+          name="signUp"
+          component={SignUp}
           options={{
             headerTransparent: true,
             headerTitle: '',
