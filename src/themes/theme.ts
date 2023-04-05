@@ -1,6 +1,15 @@
 import {extendTheme} from 'native-base';
 
 export const MAIN = extendTheme({
+  colors: {
+    primary: {
+      300: '#08090a',
+    },
+    yellow: {
+      300: '#eea12f',
+    },
+  },
+
   fontConfig: {
     Magnitude: {
       700: {

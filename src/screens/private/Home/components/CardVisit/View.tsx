@@ -23,7 +23,7 @@ export default function CardVisit({}: Props) {
           shadow={12}
           style={{elevation: 10}}
           justifyContent="space-between">
-          <S.HStack space={3} alignItems="center">
+          <S.HStack space={1} alignItems="center">
             <S.Box rounded="3xl" position="relative" overflow="hidden">
               <S.Image
                 source={{uri: barberPhoto}}
@@ -53,7 +53,7 @@ export default function CardVisit({}: Props) {
               </S.Box>
             </S.Box>
             <S.VStack>
-              <S.Text fontWeight={500} fontSize="lg" color="#080808">
+              <S.Text fontWeight={500} fontSize="md" color="#080808">
                 Richard Anderson
               </S.Text>
               <S.HStack space={1}>
@@ -72,7 +72,6 @@ export default function CardVisit({}: Props) {
             mr={1}
             _text={{
               fontWeight: 500,
-              letterSpacing: 'lg',
             }}
             color="#fff"
             rounded="xl">

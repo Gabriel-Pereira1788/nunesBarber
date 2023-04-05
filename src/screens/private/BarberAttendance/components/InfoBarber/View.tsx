@@ -13,7 +13,7 @@ export default function InfoBarber({}: InfoBarberProps) {
       style={{
         transform: [
           {
-            translateY: -110,
+            translateY: -100,
           },
         ],
       }}

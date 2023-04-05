@@ -3,20 +3,22 @@ import * as S from 'native-base';
 import {SIZES} from '../../../../../constants/sizes';
 import {TouchableOpacity} from 'react-native';
 import Assesment from './components/Assessment/View';
-type Props = {};
+type Props = {
+  onPress: () => void;
+};
 
 const locationImage =
   'https://images.unsplash.com/photo-1573588546512-2ace898aa480?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80';
 
-export default function CardBarberShop({}: Props) {
+export default function CardBarberShop({onPress}: Props) {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPress}>
       <S.VStack
         shadow={10}
         borderWidth={1}
         borderColor="#4645454d"
-        width={SIZES.width / 2 + 20}
-        height={SIZES.height / 2.2}
+        width={SIZES.width / 2 + 50}
+        height={400}
         p={1.5}
         style={{
           elevation: 10,
@@ -46,13 +48,13 @@ export default function CardBarberShop({}: Props) {
             alignItems="center"
             justifyContent="flex-start"
             space={2}>
-            <S.Text fontWeight={500} color="#f8932e">
+            <S.Text fontWeight={500} fontSize="xs" color="#f8932e">
               ABERTO AGORA
             </S.Text>
             <S.Text color="#7d7c7c">9:00 - 22:00</S.Text>
           </S.HStack>
 
-          <S.Text fontWeight={500} color="#fff" fontSize="xl">
+          <S.Text fontWeight={500} color="#fff" fontSize="md">
             El Nunes
           </S.Text>
 

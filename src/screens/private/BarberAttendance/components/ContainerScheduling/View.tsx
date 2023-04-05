@@ -3,9 +3,20 @@ import * as S from 'native-base';
 import {CaretLeft, CaretRight} from 'phosphor-react-native';
 import CardDay from '../CardDay/View';
 import CardTime from '../CardTime/View';
-type Props = {};
+import {DataAttendance} from '../../useViewModel';
 
-export default function ContainerScheduling({}: Props) {
+interface ContainerSchedulingProps {
+  handleDataAttendance: (data: DataAttendance) => void;
+}
+
+export default function ContainerScheduling({
+  handleDataAttendance,
+}: ContainerSchedulingProps) {
+  function selectData(data: DataAttendance) {
+    return () => {
+      handleDataAttendance(data);
+    };
+  }
   return (
     <S.VStack w="100%" alignItems="flex-start" mt={'5%'} space={5}>
       <S.HStack
@@ -34,7 +45,13 @@ export default function ContainerScheduling({}: Props) {
         contentContainerStyle={{
           flexGrow: 1,
         }}
-        renderItem={() => <CardDay />}
+        renderItem={() => (
+          <CardDay
+            onPress={selectData({
+              date: '12',
+            })}
+          />
+        )}
       />
       <S.Text color="#ddd" fontWeight={500} fontSize="md" px={9}>
         Time
@@ -46,7 +63,13 @@ export default function ContainerScheduling({}: Props) {
         contentContainerStyle={{
           flexGrow: 1,
         }}
-        renderItem={() => <CardTime />}
+        renderItem={() => (
+          <CardTime
+            onPress={selectData({
+              hour: '12',
+            })}
+          />
+        )}
       />
     </S.VStack>
   );
