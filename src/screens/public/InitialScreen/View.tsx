@@ -30,7 +30,7 @@ export default function InitialScreen({
           <S.Image source={Logo} alt="ImageLogo" />
         </Animated.View>
 
-        <ProgressBar redirectPage={redirectPage} />
+        <ProgressBar finishAction={redirectPage} />
       </S.VStack>
     </ImageBackground>
   );

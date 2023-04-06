@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "592620934871",
+    "project_id": "nunesbarber-529fd",
+    "storage_bucket": "nunesbarber-529fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:592620934871:android:7d5fdea61845f8d57b4292",
+        "android_client_info": {
+          "package_name": "com.nunesbarber"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "592620934871-g5d0vckvvm06fp7617tk3nnhvm06hji6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKXDa-HZO8wJ_ZfNAFRsU2SOkL5JhDzXE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "592620934871-g5d0vckvvm06fp7617tk3nnhvm06hji6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

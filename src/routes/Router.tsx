@@ -7,6 +7,7 @@ import {RootParamListI} from './navigation';
 import {TransitionPresets, createStackNavigator} from '@react-navigation/stack';
 import SignIn from '../screens/public/SignIn/View';
 import SignUp from '../screens/public/SignUp/View';
+import {useUser} from '../store/useUser';
 
 type Props = {};
 const TransitionScreenOptions = {
@@ -15,6 +16,9 @@ const TransitionScreenOptions = {
 const Stack = createStackNavigator<RootParamListI>();
 
 export default function Router({}: Props) {
+  const {user} = useUser();
+
+  console.log('data-user', user);
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={TransitionScreenOptions}>

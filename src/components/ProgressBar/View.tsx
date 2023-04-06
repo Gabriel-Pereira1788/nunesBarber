@@ -1,54 +1,19 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import * as S from 'native-base';
-import Animated, {
-  Easing,
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-} from 'react-native-reanimated';
+import Animated from 'react-native-reanimated';
+import {useProgressBar} from './useProgressBar';
 
-interface ProgressBarProps extends S.IBoxProps {
-  redirectPage: () => void;
+export interface ProgressBarProps extends S.IBoxProps {
+  finishAction: () => void;
 }
 
-export default function ProgressBar({redirectPage}: ProgressBarProps) {
-  const idTimeout = useRef<number | null>();
-  const [totalProgress, setTotalProgress] = React.useState(0);
-  const [currentProgress, setCurrentProgress] = React.useState(0);
-
-  const widthValue = useSharedValue(100);
-  const toggleOpacity = useSharedValue(false);
-  const styleProgress = useAnimatedStyle(() => {
-    return {
-      opacity: withTiming(toggleOpacity.value ? 0.5 : 1.3),
-      width: withTiming(widthValue.value, {
-        duration: 500,
-      }),
-    };
+export default function ProgressBar({finishAction}: ProgressBarProps) {
+  const {styleProgress, setCurrentProgress, setTotalProgress} = useProgressBar({
+    finishAction,
   });
 
-  React.useEffect(() => {
-    if (totalProgress > 0 && widthValue.value < totalProgress) {
-      idTimeout.current = setInterval(() => {
-        widthValue.value = widthValue.value + 10;
-        toggleOpacity.value = !toggleOpacity.value;
-      }, 1000);
-    }
-  }, [totalProgress, widthValue, toggleOpacity]);
-
-  React.useEffect(() => {
-    if (
-      totalProgress > 0 &&
-      currentProgress >= totalProgress &&
-      idTimeout.current
-    ) {
-      redirectPage();
-      clearInterval(idTimeout.current);
-    }
-  }, [currentProgress, totalProgress, redirectPage]);
-
   return (
-    <S.Box w="100%" px={5} py={3} position="absolute" bottom={0}>
+    <S.Box w="100%" position="absolute" bottom={0}>
       <S.VStack
         onLayout={e => {
           const width = e.nativeEvent.layout.width;

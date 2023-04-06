@@ -1,35 +1,25 @@
 import React from 'react';
 import {AuthDTO} from '../../../models/Auth';
-import {Errors, SignInViewModel} from './models';
+import {Errors, SignUpViewModel} from './models';
 import {useAuth} from '../../../repositories/firebase/useAuth';
-import {ERRORS_MESSAGE} from '../../../constants/errorsMessages';
-import {alertRef} from '../../../components/Alert/View';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootParamListI} from '../../../routes/navigation';
 
-type Props = {
-  navigation: NativeStackNavigationProp<RootParamListI, 'signIn', undefined>;
-};
-
-export function useSignIn({navigation}: Props): SignInViewModel {
+export function useSignUp(): SignUpViewModel {
   const [loading, setLoading] = React.useState(false);
   const [formData, setformData] = React.useState<AuthDTO>({
     email: '',
     password: '',
+    name: '',
   });
 
   const [errors, setErrors] = React.useState<Errors | null>(null);
 
-  const {signIn} = useAuth();
+  const {signUp} = useAuth();
 
   function handleFormData(key: keyof AuthDTO, value: string) {
     setformData(prev => ({...prev, [key]: value}));
     if (errors) {
       setErrors(null);
     }
-  }
-  function redirect() {
-    navigation.navigate('signUp');
   }
 
   async function onSubmit() {
@@ -38,30 +28,16 @@ export function useSignIn({navigation}: Props): SignInViewModel {
     if (!!haveErrors === false) {
       setLoading(true);
       try {
-        await signIn(formData);
-
-        navigation.replace('home');
+        await signUp(formData);
       } catch (error) {
-        const Error = error as {message: string};
-        let messageError = '';
-        Object.entries(ERRORS_MESSAGE).forEach(([key, value]) => {
-          if (Error.message.includes(key)) {
-            messageError = value;
-          }
-        });
-
-        alertRef.current?.open({
-          isOpen: true,
-          text: messageError,
-          status: 'error',
-        });
+        console.log('error', error);
       } finally {
         setLoading(false);
       }
     }
   }
 
-  return {formData, errors, loading, handleFormData, onSubmit, redirect};
+  return {formData, errors, loading, handleFormData, onSubmit};
 }
 
 function validationFields(formData: AuthDTO) {

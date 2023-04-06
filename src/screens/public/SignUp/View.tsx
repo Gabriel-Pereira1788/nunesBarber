@@ -4,12 +4,15 @@ import {ImageBackground} from 'react-native';
 import WrapperAuthForm from '../../../components/WrapperAuthForm/View';
 import Input from '../../../components/Input/View';
 import Button from '../../../components/Button/View';
+import {useSignUp} from './useViewModel';
+import InputPassword from '../../../components/Input/components/InputPassword';
 
 type Props = {};
 const backgroundImg =
   'https://images.unsplash.com/photo-1618022325802-7e5e732d97a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=748&q=80';
 
 export default function SignUp({}: Props) {
+  const {formData, errors, loading, handleFormData, onSubmit} = useSignUp();
   return (
     <ImageBackground
       source={{uri: backgroundImg}}
@@ -23,10 +26,29 @@ export default function SignUp({}: Props) {
         backgroundColor="rgba(0,0,0,0.7)"
         position="relative">
         <WrapperAuthForm title="Cadastar">
-          <Input placeholder="Nome" />
-          <Input placeholder="Email" />
-          <Input placeholder="Senha" />
-          <Button>Confirmar</Button>
+          <Input
+            placeholder="Nome"
+            error={errors?.name}
+            value={formData.name}
+            onChangeText={value => handleFormData('name', value)}
+          />
+          <Input
+            placeholder="Email"
+            error={errors?.email}
+            value={formData.email}
+            onChangeText={value => handleFormData('email', value)}
+          />
+
+          <InputPassword
+            error={errors?.password}
+            type="password"
+            placeholder="Senha"
+            value={formData.password}
+            onChangeText={value => handleFormData('password', value)}
+          />
+          <Button isLoading={loading} onPress={onSubmit}>
+            Confirmar
+          </Button>
         </WrapperAuthForm>
       </S.VStack>
     </ImageBackground>
