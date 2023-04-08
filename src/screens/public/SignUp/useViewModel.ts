@@ -1,9 +1,17 @@
 import React from 'react';
-import {AuthDTO} from '../../../models/Auth';
+import {AuthDTO, RoleUser} from '../../../common/models/Auth';
 import {Errors, SignUpViewModel} from './models';
 import {useAuth} from '../../../repositories/firebase/useAuth';
+import {ERRORS_MESSAGE} from '../../../common/constants/errorsMessages';
+import {alertRef} from '../../../components/Alert/View';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootParamListI} from '../../../routes/navigation';
 
-export function useSignUp(): SignUpViewModel {
+type Props = {
+  navigation: NativeStackNavigationProp<RootParamListI, 'signUp', undefined>;
+};
+
+export function useSignUp({navigation}: Props): SignUpViewModel {
   const [loading, setLoading] = React.useState(false);
   const [formData, setformData] = React.useState<AuthDTO>({
     email: '',
@@ -28,9 +36,30 @@ export function useSignUp(): SignUpViewModel {
     if (!!haveErrors === false) {
       setLoading(true);
       try {
-        await signUp(formData);
+        if (alertRef.current?.isOpen) {
+          alertRef.current.hide();
+        }
+        await signUp({
+          ...formData,
+          role_id: RoleUser.Client,
+        });
+
+        navigation.replace('home');
       } catch (error) {
-        console.log('error', error);
+        const Error = error as {message: string};
+        console.log(Error.message);
+        let messageError = '';
+        Object.entries(ERRORS_MESSAGE).forEach(([key, value]) => {
+          if (Error.message.includes(key)) {
+            messageError = value;
+          }
+        });
+
+        alertRef.current?.open({
+          isOpen: true,
+          text: messageError,
+          status: 'error',
+        });
       } finally {
         setLoading(false);
       }

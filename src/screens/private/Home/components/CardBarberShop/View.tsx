@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from 'native-base';
-import {SIZES} from '../../../../../constants/sizes';
+import {SIZES} from '../../../../../common/constants/sizes';
 import {TouchableOpacity} from 'react-native';
 import Assesment from './components/Assessment/View';
 type Props = {

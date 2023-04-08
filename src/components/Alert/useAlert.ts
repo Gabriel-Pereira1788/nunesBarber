@@ -23,7 +23,11 @@ export function useAlert({alertRef}: HookAlertProps): AlertViewModel {
     });
   }
 
-  React.useImperativeHandle(alertRef, () => ({open}));
+  React.useImperativeHandle(alertRef, () => ({
+    open,
+    hide,
+    isOpen: alertConfig.isOpen,
+  }));
 
   React.useEffect(() => {
     setTimeout(() => {
@@ -31,5 +35,5 @@ export function useAlert({alertRef}: HookAlertProps): AlertViewModel {
     }, 3000);
   }, []);
 
-  return {alertConfig, open};
+  return {alertConfig, open, hide};
 }

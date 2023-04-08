@@ -4,7 +4,7 @@ import Animated, {FadeInDown} from 'react-native-reanimated';
 import {TouchableOpacity} from 'react-native';
 import {BlurView} from '@react-native-community/blur';
 import {Star} from 'phosphor-react-native';
-import {globalStyles} from '../../../../../themes/globalStyles';
+import {globalStyles} from '../../../../../common/themes/globalStyles';
 type Props = {};
 
 const barberPhoto =

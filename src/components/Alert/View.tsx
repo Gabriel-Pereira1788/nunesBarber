@@ -2,36 +2,38 @@ import React from 'react';
 import * as S from 'native-base';
 import Animated, {FadeInUp} from 'react-native-reanimated';
 import RenderIF from '../RenderIF/View';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, TouchableWithoutFeedback} from 'react-native';
 import {AlertRef} from './model';
-import {useAlert} from './useAlert.model';
+import {useAlert} from './useAlert';
 type Props = {};
 
 export const alertRef = React.createRef<AlertRef>();
 
 export default function Alert({}: Props) {
-  const {alertConfig} = useAlert({alertRef});
+  const {alertConfig, hide} = useAlert({alertRef});
 
   return (
     <RenderIF condition={alertConfig.isOpen}>
-      <Animated.View
-        entering={FadeInUp.delay(150).duration(200)}
-        style={styles.animatedStyle}>
-        <S.Alert status={alertConfig.status}>
-          <S.HStack
-            flexShrink={1}
-            space={2}
-            alignItems="center"
-            justifyContent="space-between">
-            <S.HStack flexShrink={1} space={2} alignItems="center">
-              <S.Alert.Icon />
-              <S.Text fontSize="md" fontWeight="medium" color="coolGray.800">
-                {alertConfig.text}
-              </S.Text>
+      <TouchableWithoutFeedback onPress={hide}>
+        <Animated.View
+          entering={FadeInUp.delay(150).duration(200)}
+          style={styles.animatedStyle}>
+          <S.Alert status={alertConfig.status}>
+            <S.HStack
+              flexShrink={1}
+              space={2}
+              alignItems="center"
+              justifyContent="space-between">
+              <S.HStack flexShrink={1} space={2} alignItems="center" px={3}>
+                <S.Alert.Icon />
+                <S.Text fontSize="md" fontWeight="medium" color="coolGray.800">
+                  {alertConfig.text}
+                </S.Text>
+              </S.HStack>
             </S.HStack>
-          </S.HStack>
-        </S.Alert>
-      </Animated.View>
+          </S.Alert>
+        </Animated.View>
+      </TouchableWithoutFeedback>
     </RenderIF>
   );
 }

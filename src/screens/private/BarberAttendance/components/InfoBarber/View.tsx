@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from 'native-base';
 import {BlurView} from '@react-native-community/blur';
-import {globalStyles} from '../../../../../themes/globalStyles';
+import {globalStyles} from '../../../../../common/themes/globalStyles';
 import {Heart, Star} from 'phosphor-react-native';
 interface InfoBarberProps {}
 

@@ -1,6 +1,6 @@
 import {useQuery} from 'react-query';
 import {Auth} from '../repositories/services/Auth/auth';
-import {QUERY_KEYS} from '../constants/querysKey';
+import {QUERY_KEYS} from '../common/constants/querysKey';
 
 const auth = new Auth();
 

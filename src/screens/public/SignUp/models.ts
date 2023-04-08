@@ -1,4 +1,4 @@
-import {AuthDTO} from '../../../models/Auth';
+import {AuthDTO} from '../../../common/models/Auth';
 export type Errors = {
   [name in keyof AuthDTO]: string;
 };

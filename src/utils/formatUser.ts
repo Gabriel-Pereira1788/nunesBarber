@@ -1,9 +1,10 @@
 import {FirebaseAuthTypes} from '@react-native-firebase/auth';
-import {User} from '../models/Auth';
+import {RoleUser, User} from '../common/models/Auth';
 
 export function formatUser(
   user: FirebaseAuthTypes.User,
   displayName: string,
+  roleId?: RoleUser,
 ): User {
   return {
     uid: user.uid,
@@ -12,7 +13,8 @@ export function formatUser(
     photoURL: user.photoURL,
     createdAt:
       user.metadata && user.metadata.creationTime
-        ? new Date(user.metadata.creationTime!)
-        : new Date(),
+        ? new Date(user.metadata.creationTime!).toISOString()
+        : new Date().toISOString(),
+    role_id: roleId,
   };
 }

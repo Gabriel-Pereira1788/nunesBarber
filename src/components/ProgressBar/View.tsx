@@ -5,15 +5,21 @@ import {useProgressBar} from './useProgressBar';
 
 export interface ProgressBarProps extends S.IBoxProps {
   finishAction: () => void;
+  progressStep?: number;
 }
 
-export default function ProgressBar({finishAction}: ProgressBarProps) {
+export default function ProgressBar({
+  progressStep,
+  finishAction,
+  ...rest
+}: ProgressBarProps) {
   const {styleProgress, setCurrentProgress, setTotalProgress} = useProgressBar({
     finishAction,
+    progressStep,
   });
 
   return (
-    <S.Box w="100%" position="absolute" bottom={0}>
+    <S.Box w="100%" position="absolute" bottom={0} {...rest}>
       <S.VStack
         onLayout={e => {
           const width = e.nativeEvent.layout.width;

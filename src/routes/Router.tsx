@@ -23,6 +23,14 @@ export default function Router({}: Props) {
     <NavigationContainer>
       <Stack.Navigator screenOptions={TransitionScreenOptions}>
         <Stack.Screen
+          name="initial_screen"
+          component={InitialScreen}
+          options={{
+            headerTransparent: true,
+            headerTitle: '',
+          }}
+        />
+        <Stack.Screen
           name="signIn"
           component={SignIn}
           options={{
@@ -39,14 +47,7 @@ export default function Router({}: Props) {
             headerTitle: '',
           }}
         />
-        <Stack.Screen
-          name="initial_screen"
-          component={InitialScreen}
-          options={{
-            headerTransparent: true,
-            headerTitle: '',
-          }}
-        />
+
         <Stack.Screen
           name="home"
           component={Home}

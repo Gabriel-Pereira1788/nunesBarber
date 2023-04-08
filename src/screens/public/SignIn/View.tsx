@@ -22,7 +22,7 @@ export default function SignIn({navigation}: NavigationProps<'signIn'>) {
       <S.Text fontWeight={500} color="#828080">
         Não possui uma conta ?
       </S.Text>
-      <TouchableOpacity onPress={redirect}>
+      <TouchableOpacity testID="register" onPress={redirect}>
         <S.Text bold color="yellow.300">
           Cadastrar-se
         </S.Text>

@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {STORAGE_KEYS} from '../../../constants/querysKey';
+import {STORAGE_KEYS} from '../../../common/constants/querysKey';
 import {AuthModel} from './auth.model';
-import {User} from '../../../models/Auth';
+import {User} from '../../../common/models/Auth';
 import queryClient from '../../queryClient';
 
 export class Auth implements AuthModel {

@@ -1,4 +1,4 @@
-import {User} from '../../../models/Auth';
+import {User} from '../../../common/models/Auth';
 
 export interface AuthModel {
   persistUser: () => Promise<User>;

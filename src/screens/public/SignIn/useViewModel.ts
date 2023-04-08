@@ -1,8 +1,8 @@
 import React from 'react';
-import {AuthDTO} from '../../../models/Auth';
+import {AuthDTO} from '../../../common/models/Auth';
 import {Errors, SignInViewModel} from './models';
 import {useAuth} from '../../../repositories/firebase/useAuth';
-import {ERRORS_MESSAGE} from '../../../constants/errorsMessages';
+import {ERRORS_MESSAGE} from '../../../common/constants/errorsMessages';
 import {alertRef} from '../../../components/Alert/View';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootParamListI} from '../../../routes/navigation';
@@ -38,8 +38,10 @@ export function useSignIn({navigation}: Props): SignInViewModel {
     if (!!haveErrors === false) {
       setLoading(true);
       try {
+        if (alertRef.current?.isOpen) {
+          alertRef.current.hide();
+        }
         await signIn(formData);
-
         navigation.replace('home');
       } catch (error) {
         const Error = error as {message: string};

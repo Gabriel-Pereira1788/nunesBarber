@@ -7,10 +7,14 @@ import {
 import {ProgressBarProps} from './View';
 import {ProgressBarViewModel} from './model';
 
-type HookProgressBarProps = Pick<ProgressBarProps, 'finishAction'>;
+type HookProgressBarProps = Pick<
+  ProgressBarProps,
+  'finishAction' | 'progressStep'
+>;
 
 export function useProgressBar({
   finishAction,
+  progressStep,
 }: HookProgressBarProps): ProgressBarViewModel {
   const idTimeout = React.useRef<number | null>();
   const [totalProgress, setTotalProgress] = React.useState(0);
@@ -28,13 +32,15 @@ export function useProgressBar({
   });
 
   React.useEffect(() => {
+    const step = progressStep ? progressStep : totalProgress / 4;
+
     if (totalProgress > 0 && widthValue.value < totalProgress) {
       idTimeout.current = setInterval(() => {
-        widthValue.value = widthValue.value + 10;
+        widthValue.value = widthValue.value + step;
         toggleOpacity.value = !toggleOpacity.value;
       }, 1000);
     }
-  }, [totalProgress, widthValue, toggleOpacity]);
+  }, [totalProgress, widthValue, toggleOpacity, progressStep]);
 
   React.useEffect(() => {
     if (

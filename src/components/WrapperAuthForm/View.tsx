@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from 'native-base';
-import GoogleLogo from '../../assets/images/google.png';
+import GoogleLogo from '../../common/assets/images/google.png';
 import SocialButton from '../SocialButton/View';
 import Animated, {FadeInLeft} from 'react-native-reanimated';
 interface WrapperAuthFormProps {
