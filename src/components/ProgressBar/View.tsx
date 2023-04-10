@@ -21,6 +21,7 @@ export default function ProgressBar({
   return (
     <S.Box w="100%" position="absolute" bottom={0} {...rest}>
       <S.VStack
+        testID="progress-wrapper"
         onLayout={e => {
           const width = e.nativeEvent.layout.width;
           setTotalProgress(width);
@@ -31,6 +32,7 @@ export default function ProgressBar({
         height={1}
         overflow="hidden">
         <Animated.View
+          testID="progress-bar"
           onLayout={e => {
             const width = e.nativeEvent.layout.width;
             setCurrentProgress(width);

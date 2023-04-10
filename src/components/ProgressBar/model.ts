@@ -6,5 +6,7 @@ export interface ProgressBarViewModel {
     width: number;
   };
   setCurrentProgress: React.Dispatch<React.SetStateAction<number>>;
+  currentProgress?: number;
+  totalProgress?: number;
   setTotalProgress: React.Dispatch<React.SetStateAction<number>>;
 }

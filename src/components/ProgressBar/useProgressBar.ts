@@ -53,5 +53,11 @@ export function useProgressBar({
     }
   }, [currentProgress, totalProgress, finishAction]);
 
-  return {styleProgress, setCurrentProgress, setTotalProgress};
+  return {
+    styleProgress,
+    currentProgress,
+    totalProgress,
+    setCurrentProgress,
+    setTotalProgress,
+  };
 }

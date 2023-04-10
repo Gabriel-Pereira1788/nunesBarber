@@ -21,8 +21,7 @@ export function useAuth() {
       });
       const dataUser = formatUser(result.user, data.name!, data.role_id);
 
-      await addDoc<User>(dataUser);
-      await auth.setUser(dataUser);
+      await Promise.all([addDoc<User>(dataUser), auth.setUser(dataUser)]);
     }
   }
 

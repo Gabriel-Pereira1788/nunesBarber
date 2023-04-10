@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from 'native-base';
 import Logo from '../../../common/assets/images/man.png';
-import InitialBackground from '../../../common/assets/images/initial-background.jpg';
+import InitialBackground from '../../../common/assets/images/initial_background.jpg';
 import Animated, {FadeInUp} from 'react-native-reanimated';
 import {ImageBackground} from 'react-native';
 import ProgressBar from '../../../components/ProgressBar/View';
