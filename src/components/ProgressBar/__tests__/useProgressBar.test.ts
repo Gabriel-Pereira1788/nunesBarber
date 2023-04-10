@@ -4,6 +4,7 @@ const finishActionMock = jest.fn();
 
 beforeAll(() => {
   jest.useFakeTimers();
+  jest.runAllTimers();
 });
 describe('useProgressBar', () => {
   it('call setcurrentProgress correclty', () => {
@@ -21,9 +22,6 @@ describe('useProgressBar', () => {
     expect(result.current.currentProgress).toEqual(100);
   });
 
-  beforeEach(() => {
-    jest.runAllTimers();
-  });
   it('call setTotalProgress correclty', () => {
     const {result} = renderHook(() =>
       useProgressBar({

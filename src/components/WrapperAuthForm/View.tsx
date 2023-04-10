@@ -15,7 +15,13 @@ export default function WrapperAuthForm({
   RedirectComp,
 }: WrapperAuthFormProps) {
   const LogoIcon = (
-    <S.Image source={GoogleLogo} width={7} height={7} alt="google-logo" />
+    <S.Image
+      testID="icon-google"
+      source={GoogleLogo}
+      width={7}
+      height={7}
+      alt="google-logo"
+    />
   );
   return (
     <S.VStack w="100%" space={5} p={5} borderRadius="lg" overflow="hidden">

@@ -20,12 +20,12 @@ describe('useInitialScreen', () => {
     expect(navigation.replace).toHaveBeenCalledWith('signIn');
   });
 
-  test('redirects to signIn screen when user is authenticated', () => {
+  test('redirects to home screen when user is authenticated', () => {
     useUserMock.mockReturnValueOnce({user: {id: 1}});
 
     const {result} = renderHook(() => useInitialScreen({navigation}));
     result.current.redirectPage();
 
-    expect(navigation.replace).toHaveBeenCalledWith('signIn');
+    expect(navigation.replace).toHaveBeenCalledWith('home');
   });
 });

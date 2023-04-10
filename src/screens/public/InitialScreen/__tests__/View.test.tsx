@@ -45,7 +45,7 @@ describe('InitialScreen', () => {
     const imagePath = '../../../src/common/assets/images/man.png';
 
     const imageInitial =
-      '../../../src/common/assets/images/initial-background.jpg';
+      '../../../src/common/assets/images/initial_background.jpg';
     const {getByTestId} = render(
       <WrapperProvider>
         <InitialScreen navigation={navigationMock} route={route} />

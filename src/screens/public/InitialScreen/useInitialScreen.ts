@@ -15,7 +15,7 @@ export function useInitialScreen({navigation}: Props) {
 
   function redirectPage() {
     if (user) {
-      navigation.replace('signIn');
+      navigation.replace('home');
     } else {
       navigation.replace('signIn');
     }
